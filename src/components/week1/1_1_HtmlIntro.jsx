@@ -1,5 +1,66 @@
 import CodePreview from '../common/CodePreview';
 
+export const HtmlConceptLighthouse = () => (
+  <div className="animate-up" style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+    <div className="status-badge" style={{ marginBottom: '1rem', width: 'fit-content' }}>등대 🚀</div>
+    <h2>HTML 태그, 도대체 어떻게 생겼을까?</h2>
+    <p className="lead" style={{ marginBottom: '2rem' }}>코드를 외우기 전, HTML의 가장 기본이 되는 <strong>'태그 구조'</strong>를 이해하세요.</p>
+
+    <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '30px' }}>
+      
+      {/* 태그 해부학 */}
+      <div className="pbl-card" style={{ background: '#fff', textAlign: 'center', padding: '40px 20px', display: 'flex', flexDirection: 'column', gap: '30px', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', borderTop: '4px solid var(--ll-orange)' }}>
+        <h3 style={{ fontSize: '1.2rem', color: '#666', margin: 0 }}>🔍 텍스트를 감싸는 포장지 (Anatomy of a Tag)</h3>
+        
+        <div style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', fontWeight: 900, fontFamily: 'monospace', gap: '20px' }}>
+          <span style={{ color: 'var(--ll-orange)' }}>&lt;p&gt;</span>
+          <span style={{ color: '#111', fontSize: '2.5rem' }}>안녕하세요</span>
+          <span style={{ color: 'var(--ll-orange)' }}>&lt;/p&gt;</span>
+        </div>
+
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px' }}>
+          <div style={{ textAlign: 'center', flex: 1 }}>
+            <div style={{ color: 'var(--ll-orange)', fontSize: '1.3rem', fontWeight: 900 }}>여는 태그</div>
+            <div style={{ fontSize: '0.9rem', color: '#666', marginTop: '5px' }}>"여기서부터 문단(p) 시작!"</div>
+          </div>
+          <div style={{ textAlign: 'center', flex: 1.5 }}>
+            <div style={{ color: '#111', fontSize: '1.3rem', fontWeight: 900 }}>내용 (Content)</div>
+            <div style={{ fontSize: '0.9rem', color: '#666', marginTop: '5px' }}>실제 화면에 출력되는 진짜 정보</div>
+          </div>
+          <div style={{ textAlign: 'center', flex: 1 }}>
+            <div style={{ color: 'var(--ll-orange)', fontSize: '1.3rem', fontWeight: 900 }}>닫는 태그</div>
+            <div style={{ fontSize: '0.9rem', color: '#666', marginTop: '5px' }}>"문단(p)이 여기서 끝나요!"</div>
+            <div style={{ fontSize: '0.8rem', color: '#EF4444', fontWeight: 800, marginTop: '2px' }}>(슬래시 / 잊지마세요)</div>
+          </div>
+        </div>
+      </div>
+
+      {/* 중첩 구조 비유 */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+        <div className="pbl-card" style={{ background: 'var(--ll-bg-soft)', border: 'none', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+          <h3 style={{ fontSize: '1.2rem', marginBottom: '15px' }}>🪆 마트료시카 (러시아 인형)</h3>
+          <p style={{ lineHeight: 1.6, color: '#444' }}>
+            HTML은 큰 상자 안에 작은 상자를 넣듯이 <strong>계속 중첩해서</strong> 만들 수 있습니다. 이를 부모태그와 자식태그라고 부릅니다.
+          </p>
+        </div>
+        <div className="pbl-card" style={{ background: '#fafafa', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <code style={{ fontSize: '1.2rem', color: '#111', fontWeight: 800, lineHeight: 1.5 }}>
+            <span style={{ color: '#3B82F6' }}>&lt;div&gt;</span><br/>
+            &nbsp;&nbsp;<span style={{ color: 'var(--ll-orange)' }}>&lt;p&gt;</span>
+            <span style={{ color: '#555', fontWeight: 500 }}>나는 본문 1 !</span>
+            <span style={{ color: 'var(--ll-orange)' }}>&lt;/p&gt;</span><br/>
+            &nbsp;&nbsp;<span style={{ color: 'var(--ll-orange)' }}>&lt;p&gt;</span>
+            <span style={{ color: '#555', fontWeight: 500 }}>나는 본문 2 !</span>
+            <span style={{ color: 'var(--ll-orange)' }}>&lt;/p&gt;</span><br/>
+            <span style={{ color: '#3B82F6' }}>&lt;/div&gt;</span>
+          </code>
+        </div>
+      </div>
+
+    </div>
+  </div>
+);
+
 export const HtmlSemantics1 = () => (
   <div className="animate-up">
     <h2>태그는 '이름표'입니다 (Semantics)</h2>
@@ -46,15 +107,7 @@ export const HtmlBoilerplate = () => (
         { name: 'head', desc: '문서 정보(메타데이터) 영역' },
         { name: 'body', desc: '실제 화면에 보이는 영역' }
       ]}
-    >
-      <div style={{ padding: '10px' }}>
-        <ul style={{ fontSize: '0.9rem', color: '#666', lineHeight: 1.8 }}>
-          <li><strong>!DOCTYPE</strong>: "나는 최신 HTML5야!"</li>
-          <li><strong>head</strong>: 화면엔 안 보이지만 중요한 정보들</li>
-          <li><strong>body</strong>: 우리가 눈으로 보는 모든 것</li>
-        </ul>
-      </div>
-    </CodePreview>
+    />
   </div>
 );
 

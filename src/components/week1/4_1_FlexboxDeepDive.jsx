@@ -34,26 +34,13 @@ export const Flexbox2 = () => (
       language="css"
       code={`.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 20px;\n}`}
       title="완벽한 중앙 정렬"
-      previewHtml='<div class="container" style="height:200px;background:#fafafa;border-radius:12px;"><div style="width:80px;height:80px;background:#FF6000;border-radius:12px;"></div><div style="width:80px;height:80px;background:#111;border-radius:12px;"></div></div>'
+      previewHtml='<div class="container" style="height:100%;background:#fafafa;border-radius:12px;padding:20px;"><div style="width:80px;height:80px;background:#FF6000;border-radius:12px;"></div><div style="width:80px;height:80px;background:#111;border-radius:12px;"></div></div>'
       tags={[
         { name: 'display: flex', desc: '아이템들을 1차원으로 정렬 시작' },
         { name: 'justify-content', desc: '가로(메인축) 정렬 (가운데: center)' },
         { name: 'align-items', desc: '세로(교차축) 정렬 (가운데: center)' },
         { name: 'gap', desc: '아이템 사이의 간격' }
       ]}
-    >
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
-        gap: '20px', 
-        height: '100%',
-        background: 'var(--ll-bg-soft)',
-        borderRadius: '12px'
-      }}>
-        <div style={{ width: '80px', height: '80px', background: 'var(--ll-orange)', borderRadius: '12px', boxShadow: '0 8px 16px rgba(255, 96, 0, 0.2)' }} />
-        <div style={{ width: '80px', height: '80px', background: '#111', borderRadius: '12px' }} />
-      </div>
-    </CodePreview>
+    />
   </div>
 );

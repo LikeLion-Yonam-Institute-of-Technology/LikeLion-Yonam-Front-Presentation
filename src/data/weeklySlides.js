@@ -1,6 +1,6 @@
 import { WelcomeSlide, WebPillars, EverythingIsABox } from '../components/week1/0_Intro.jsx';
-import { HtmlSemantics1, HtmlBoilerplate, HtmlIntroPractice } from '../components/week1/1_1_HtmlIntro.jsx';
-import { HtmlText1, HtmlTextEmphasis, HtmlTextEdit, HtmlText3, HtmlTextPractice } from '../components/week1/1_2_HtmlTextFormatting.jsx';
+import { HtmlConceptLighthouse, HtmlSemantics1, HtmlBoilerplate, HtmlIntroPractice } from '../components/week1/1_1_HtmlIntro.jsx';
+import { HtmlText1, HtmlVoidElements, HtmlTextEmphasis, HtmlTextEdit, HtmlText3, HtmlTextPractice } from '../components/week1/1_2_HtmlTextFormatting.jsx';
 import { HtmlLinks, HtmlImages, HtmlLinkPractice } from '../components/week1/1_3_HtmlLinksImages.jsx';
 import { HtmlListsBasic, HtmlListsDef, HtmlTables, HtmlListPractice } from '../components/week1/1_4_HtmlListsTables.jsx';
 import { HtmlForms, HtmlFormsSelect, HtmlFormsModern, HtmlFormPractice } from '../components/week1/1_5_HtmlForms.jsx';
@@ -26,10 +26,12 @@ export const weeklySlides = {
       EverythingIsABox,
 
       // Session 1: HTML Structure
+      HtmlConceptLighthouse,
       HtmlSemantics1,
       HtmlBoilerplate,
       HtmlIntroPractice,
       HtmlText1,
+      HtmlVoidElements,
       HtmlTextEmphasis,
       HtmlTextEdit,
       HtmlText3,

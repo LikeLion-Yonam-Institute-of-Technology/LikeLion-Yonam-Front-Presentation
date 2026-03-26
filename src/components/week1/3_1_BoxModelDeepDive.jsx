@@ -231,31 +231,21 @@ export const BoxDecoration = () => (
       <CodePreview 
         language="css"
         title="border-radius (모서리)"
-        code={`div {\n  border-radius: 20px;\n}`}
-        previewHtml='<div style="display:flex;gap:20px;align-items:center;justify-content:center;padding:20px;"><div style="width:100px;height:100px;background:#FF6000;"></div><div style="width:100px;height:100px;background:#111;"></div></div>'
+        code={`.box {\n  border-radius: 20px;\n}`}
+        previewHtml='<section style="display:flex;gap:20px;align-items:center;justify-content:center;height:100%;"><div class="box" style="width:100px;height:100px;background:#FF6000;"></div><div class="box" style="width:100px;height:100px;background:#111;border-radius:50%;"></div></section>'
         tags={[
           { name: 'border-radius', desc: '상자의 모서리를 둥글게 깎는 속성 (px 또는 % 단위)' }
         ]}
-      >
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-          <div style={{ width: '100px', height: '100px', background: 'var(--ll-orange)', borderRadius: '20px' }} />
-          <div style={{ width: '100px', height: '100px', background: '#111', borderRadius: '50%' }} />
-        </div>
-      </CodePreview>
+      />
       <CodePreview 
         language="css"
         title="box-shadow (그림자)"
-        code={`div {\n  box-shadow: 0 10px 30px rgba(0,0,0,0.1);\n}`}
-        previewHtml='<div style="display:flex;gap:20px;align-items:center;justify-content:center;padding:20px;"><div style="width:100px;height:100px;background:white;border:1px solid #eee;border-radius:16px;"></div><div style="width:100px;height:100px;background:#FF6000;border-radius:16px;"></div></div>'
+        code={`.box {\n  box-shadow: 0 10px 30px rgba(0,0,0,0.1);\n}`}
+        previewHtml='<section style="display:flex;gap:20px;align-items:center;justify-content:center;height:100%;"><div class="box" style="width:100px;height:100px;background:white;border:1px solid #eee;border-radius:16px;"></div><div class="box" style="width:100px;height:100px;background:#FF6000;border-radius:16px;"></div></section>'
         tags={[
           { name: 'box-shadow', desc: '상자에 그림자 효과 부여 (x축 y축 블러 색상 순서)' }
         ]}
-      >
-        <div style={{ display: 'flex', gap: '20px', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-          <div style={{ width: '100px', height: '100px', background: 'white', border: '1px solid #eee', borderRadius: '16px', boxShadow: '0 20px 40px rgba(0,0,0,0.1)' }} />
-          <div style={{ width: '100px', height: '100px', background: 'var(--ll-orange)', borderRadius: '16px', boxShadow: '0 0 20px rgba(255, 96, 0, 0.4)' }} />
-        </div>
-      </CodePreview>
+      />
     </div>
   </div>
 );

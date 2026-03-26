@@ -16,6 +16,21 @@ export const HtmlText1 = () => (
   </div>
 );
 
+export const HtmlVoidElements = () => (
+  <div className="animate-up">
+    <h2>닫는 태그가 없는 예외들 (빈 요소)</h2>
+    <p className="lead">내용(content)을 품지 않아서 <code>&lt;br&gt;</code>처럼 단독으로 쓰이는 태그들입니다.</p>
+    <CodePreview 
+      code={`<p>\n  아무리 엔터를 쳐도\n  브라우저는 한 줄로 보여줍니다.\n  하지만 <br> 브라우저에게 "줄바꿈해!" 라고\n  명령하면 이렇게 다음 줄로 넘어갑니다.\n</p>\n\n<hr>\n\n<p>hr 태그는 수평선(구분선)을 그어줍니다.</p>`}
+      title="줄바꿈 & 수평선"
+      tags={[
+        { name: 'br', desc: 'Break (줄바꿈 - 엔터 키 역할)' },
+        { name: 'hr', desc: 'Horizontal Rule (수평 규칙선)' }
+      ]}
+    />
+  </div>
+);
+
 export const HtmlTextEmphasis = () => (
   <div className="animate-up">
     <h2>의미를 담은 강조와 편집 (1)</h2>
