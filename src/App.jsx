@@ -19,6 +19,15 @@ function App() {
 
   useEffect(() => {
     const handleKeyDown = (e) => {
+      // 텍스트 편집 중에는 슬라이드 넘김 방지
+      if (
+        e.target.tagName === 'INPUT' || 
+        e.target.tagName === 'TEXTAREA' || 
+        e.target.isContentEditable
+      ) {
+        return;
+      }
+
       if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
       else if (e.key === 'ArrowLeft') prevSlide();
     };

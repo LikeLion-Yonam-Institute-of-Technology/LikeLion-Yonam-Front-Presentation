@@ -83,50 +83,79 @@ export const BoxModel1 = () => (
 
 export const BoxModel2 = () => (
   <div className="animate-up">
-    <h2>Box-sizing: 크기 계산의 마법</h2>
-    <p className="lead">패딩과 테두리를 포함할지 말지 결정합니다.</p>
+    <h2>Box-sizing: 크기 폭발 막기</h2>
+    <p className="lead"><code>width: 150px</code>에 <code>padding: 25px</code>을 더하면 박스의 <b>진짜 크기</b>는 어떻게 될까요?</p>
+    
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', marginTop: '2rem' }}>
-      <div className="pbl-card">
-        <h4 style={{ marginBottom: '1.5rem', fontWeight: 800 }}>box-sizing: content-box (기본값)</h4>
-        <div style={{ width: '150px', height: '150px', background: 'var(--ll-orange)', opacity: 0.2, position: 'absolute' }} />
-        <div style={{ 
-          width: '150px', 
-          height: '150px', 
-          background: 'var(--ll-orange)', 
-          padding: '40px', 
-          border: '10px solid #111', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          color: 'white', 
-          fontWeight: 900,
-          boxSizing: 'content-box',
-          position: 'relative',
-          zIndex: 1
-        }}>
-          250px?!
+      
+      {/* Content-box */}
+      <div className="pbl-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', borderTop: '6px solid #EF4444' }}>
+        <h3 style={{ color: '#EF4444', marginBottom: '0.5rem' }}>content-box (기본값)</h3>
+        <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '2rem', textAlign: 'center', lineHeight: 1.6 }}>
+          "컨텐츠 크기만 150px로 맞출게.<br/>패딩과 테두리는 그 바깥에 <strong>추가로</strong> 붙여!"
+        </p>
+        
+        <div style={{ position: 'relative', width: '200px', height: '220px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
+          {/* Dimension Line */}
+          <div style={{ position: 'absolute', top: '0', width: '200px', borderTop: '2px dashed #EF4444', display: 'flex', justifyContent: 'center' }}>
+            <span style={{ background: '#fff', padding: '0 8px', color: '#EF4444', fontSize: '0.85rem', fontWeight: 800, transform: 'translateY(-50%)' }}>실제 크기: 200px (커짐!)</span>
+          </div>
+          
+          {/* Actual Box */}
+          <div style={{ 
+            width: '150px', height: '150px', 
+            background: 'rgba(255, 96, 0, 0.15)',
+            border: '2px dashed #EF4444',
+            padding: '25px', 
+            boxSizing: 'content-box',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', 
+          }}>
+            <div style={{ background: 'var(--ll-orange)', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 900, textAlign: 'center', lineHeight: 1.4, borderRadius: '4px' }}>
+              컨텐츠<br/>150px
+            </div>
+          </div>
         </div>
-        <p style={{ marginTop: '2rem', fontSize: '0.9rem', color: '#666' }}>설정한 width(150px)에 padding과 border가 <strong>더해져서</strong> 박스가 커집니다.</p>
-      </div>
-      <div className="pbl-card" style={{ background: 'var(--ll-orange-light)', border: '2px solid var(--ll-orange)' }}>
-        <h4 style={{ marginBottom: '1.5rem', fontWeight: 800, color: 'var(--ll-orange)' }}>box-sizing: border-box (추천!)</h4>
-        <div style={{ 
-          width: '150px', 
-          height: '150px', 
-          background: 'var(--ll-orange)', 
-          padding: '40px', 
-          border: '10px solid #111', 
-          display: 'flex', 
-          alignItems: 'center', 
-          justifyContent: 'center', 
-          color: 'white', 
-          fontWeight: 900,
-          boxSizing: 'border-box'
-        }}>
-          150px!
+
+        <div style={{ background: '#fef2f2', color: '#991B1B', padding: '15px', borderRadius: '8px', width: '100%', fontSize: '0.9rem', marginTop: 'auto', textAlign: 'center' }}>
+          150px + 양쪽 패딩(50px) = <strong>200px</strong><br/>
+          <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>원했던 150px보다 커져서 레이아웃이 박살납니다💀</span>
         </div>
-        <p style={{ marginTop: '2rem', fontSize: '0.9rem', color: '#666' }}>설정한 width(150px) <strong>안에</strong> padding과 border가 포함됩니다. 크기 계산이 훨씬 쉬워집니다.</p>
       </div>
+
+      {/* Border-box */}
+      <div className="pbl-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', borderTop: '6px solid #10B981', background: '#f8fffb' }}>
+        <h3 style={{ color: '#10B981', marginBottom: '0.5rem' }}>border-box (강력 추천!)</h3>
+        <p style={{ fontSize: '0.9rem', color: '#666', marginBottom: '2rem', textAlign: 'center', lineHeight: 1.6 }}>
+          "패딩과 테두리를 다 포함해서 150px로 맞출게.<br/>대신 내용물을 <strong>안으로</strong> 찌그러트려!"
+        </p>
+
+        <div style={{ position: 'relative', width: '200px', height: '220px', display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
+          {/* Dimension Line */}
+          <div style={{ position: 'absolute', top: '25px', width: '150px', borderTop: '2px dashed #10B981', display: 'flex', justifyContent: 'center', zIndex: 10 }}>
+            <span style={{ background: '#f8fffb', padding: '0 8px', color: '#10B981', fontSize: '0.85rem', fontWeight: 800, transform: 'translateY(-50%)' }}>전체: 150px (유지!)</span>
+          </div>
+          
+          {/* Actual Box */}
+          <div style={{ 
+            width: '150px', height: '150px', 
+            background: 'rgba(16, 185, 129, 0.15)',
+            border: '2px dashed #10B981',
+            padding: '25px', 
+            boxSizing: 'border-box',
+            display: 'flex', alignItems: 'center', justifyContent: 'center', 
+          }}>
+            <div style={{ background: '#10B981', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 900, textAlign: 'center', lineHeight: 1.4, borderRadius: '4px' }}>
+              컨텐츠<br/>100px
+            </div>
+          </div>
+        </div>
+
+        <div style={{ background: '#ecfdf5', color: '#065F46', padding: '15px', borderRadius: '8px', width: '100%', fontSize: '0.9rem', marginTop: 'auto', textAlign: 'center' }}>
+          크기는 내가 선언한 <strong>150px 그대로!</strong><br/>
+          <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>내용물이 작아지더라도 레이아웃 크기가 안전합니다😊</span>
+        </div>
+      </div>
+
     </div>
   </div>
 );
@@ -200,8 +229,10 @@ export const BoxDecoration = () => (
     <h2>박스 꾸미기: 눈길을 끄는 디테일</h2>
     <div style={{ display: 'flex', flexDirection: 'column', gap: '32px', marginTop: '2rem' }}>
       <CodePreview 
+        language="css"
         title="border-radius (모서리)"
         code={`div {\n  border-radius: 20px;\n}`}
+        previewHtml='<div style="display:flex;gap:20px;align-items:center;justify-content:center;padding:20px;"><div style="width:100px;height:100px;background:#FF6000;"></div><div style="width:100px;height:100px;background:#111;"></div></div>'
         tags={[
           { name: 'border-radius', desc: '상자의 모서리를 둥글게 깎는 속성 (px 또는 % 단위)' }
         ]}
@@ -212,8 +243,10 @@ export const BoxDecoration = () => (
         </div>
       </CodePreview>
       <CodePreview 
+        language="css"
         title="box-shadow (그림자)"
         code={`div {\n  box-shadow: 0 10px 30px rgba(0,0,0,0.1);\n}`}
+        previewHtml='<div style="display:flex;gap:20px;align-items:center;justify-content:center;padding:20px;"><div style="width:100px;height:100px;background:white;border:1px solid #eee;border-radius:16px;"></div><div style="width:100px;height:100px;background:#FF6000;border-radius:16px;"></div></div>'
         tags={[
           { name: 'box-shadow', desc: '상자에 그림자 효과 부여 (x축 y축 블러 색상 순서)' }
         ]}

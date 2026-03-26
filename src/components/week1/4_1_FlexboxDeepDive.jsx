@@ -31,8 +31,10 @@ export const Flexbox2 = () => (
     <h2>중앙 정렬의 공식</h2>
     <p className="lead">가장 많이 쓰이는 Flexbox 조합입니다.</p>
     <CodePreview 
+      language="css"
       code={`.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  gap: 20px;\n}`}
       title="완벽한 중앙 정렬"
+      previewHtml='<div class="container" style="height:200px;background:#fafafa;border-radius:12px;"><div style="width:80px;height:80px;background:#FF6000;border-radius:12px;"></div><div style="width:80px;height:80px;background:#111;border-radius:12px;"></div></div>'
       tags={[
         { name: 'display: flex', desc: '아이템들을 1차원으로 정렬 시작' },
         { name: 'justify-content', desc: '가로(메인축) 정렬 (가운데: center)' },
