@@ -11,21 +11,36 @@ import { CssSpecificity, CssColors, CssUnits, CssLayoutVillains } from '../compo
 import { CssVisuals1, CssVisuals2 } from '../components/week1/2_3_CssVisuals.jsx';
 import { BoxModel1, BoxModel2, DisplayProperty, BoxDecoration, BoxModelPlayground } from '../components/week1/3_1_BoxModelDeepDive.jsx';
 import DevToolsGuide from '../components/week1/3_2_DevToolsGuide.jsx';
-
 import { Flexbox1, Flexbox2 } from '../components/week1/4_1_FlexboxDeepDive.jsx';
 import { MissionHTML, MissionCSS } from '../components/week1/5_1_Practice.jsx';
 import { WrapUp1, WrapUp2 } from '../components/week1/5_WrapUp.jsx';
 
+import { Week2Welcome, Week2Goals } from '../components/week2/0_Intro.jsx';
+import {
+  AssignmentReviewIntro,
+  AssignmentReviewBuildFlow,
+  AssignmentReviewStep1,
+  AssignmentReviewStep2,
+  AssignmentReviewStep3,
+  AssignmentReviewStep4,
+} from '../components/week2/1_1_AssignmentReview.jsx';
+import { froggyLevelSlides } from '../components/week2/1_2_EmbeddedFroggy.jsx';
+import {
+  GridConceptPractice,
+  PositionConceptPractice,
+  MediaQueryConceptPractice,
+  TransformConceptPractice,
+} from '../components/week2/2_1_CssConceptPractice.jsx';
+import { Week2Mission, Week2CodeStarter } from '../components/week2/3_1_Mission.jsx';
+import { Week2WrapUpSummary, Week2NextSession } from '../components/week2/4_1_WrapUp.jsx';
+
 export const weeklySlides = {
   1: {
-    title: "WEEK 01 : HTML & CSS 기초",
+    title: 'WEEK 01 : HTML & CSS 기초',
     slides: [
-      // Intro & Mental Model
       WelcomeSlide,
       WebPillars,
       EverythingIsABox,
-
-      // Session 1: HTML Structure
       HtmlConceptLighthouse,
       HtmlSemantics1,
       HtmlBoilerplate,
@@ -48,8 +63,6 @@ export const weeklySlides = {
       HtmlFormsModern,
       HtmlFormPractice,
       HtmlSemantics2,
-      
-      // Session 2: CSS Basics
       CssIntro1,
       CssIntro2,
       CssSelectors1,
@@ -60,42 +73,52 @@ export const weeklySlides = {
       CssLayoutVillains,
       CssVisuals1,
       CssVisuals2,
-      
-      // Session 3: Box Model
       BoxModel1,
       BoxModel2,
       DisplayProperty,
       BoxDecoration,
       DevToolsGuide,
       BoxModelPlayground,
-
-      // Session 4: Layout (Flexbox)
       Flexbox1,
       Flexbox2,
-      
-      // Session 5: Comprehensive Practice
       MissionHTML,
       MissionCSS,
-      
-      // Wrap-up
       WrapUp1,
-      WrapUp2
-    ]
+      WrapUp2,
+    ],
   },
   2: {
-    title: "WEEK 02 : CSS 레이아웃 & 반응형 설계",
-    slides: []
+    title: 'WEEK 02 : CSS 레이아웃 & 반응형 설계',
+    slides: [
+      Week2Welcome,
+      Week2Goals,
+      AssignmentReviewIntro,
+      AssignmentReviewBuildFlow,
+      AssignmentReviewStep1,
+      AssignmentReviewStep2,
+      AssignmentReviewStep3,
+      AssignmentReviewStep4,
+      ...froggyLevelSlides,
+      GridConceptPractice,
+      PositionConceptPractice,
+      MediaQueryConceptPractice,
+      TransformConceptPractice,
+      Week2Mission,
+      Week2CodeStarter,
+      Week2WrapUpSummary,
+      Week2NextSession,
+    ],
   },
   3: {
-    title: "WEEK 03 : JavaScript 기초 & DOM 조작",
-    slides: []
+    title: 'WEEK 03 : JavaScript 기초 & DOM 조작',
+    slides: [],
   },
   4: {
-    title: "WEEK 04 : JavaScript 비동기 & 데이터 흐름",
-    slides: []
+    title: 'WEEK 04 : JavaScript 비동기 & 데이터 흐름',
+    slides: [],
   },
   5: {
-    title: "WEEK 05 : React 시작하기 - 컴포넌트 사고",
-    slides: []
-  }
+    title: 'WEEK 05 : React 시작하기 - 컴포넌트 사고',
+    slides: [],
+  },
 };
