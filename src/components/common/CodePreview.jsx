@@ -23,6 +23,7 @@ const CodePreview = ({
   const [hasEdited, setHasEdited] = useState(false);
   const highlightRef = useRef(null);
 
+  // 외부 프롭이 변경되면 에디터 내용도 동기화
   useEffect(() => {
     setCode(initialCode || '');
     setHasEdited(false);
@@ -33,8 +34,10 @@ const CodePreview = ({
     setHasEdited(true);
   };
 
+  // 언어에 따라 적절한 srcDoc 생성
   const srcDoc = useMemo(() => {
     if (language === 'css') {
+      // CSS 코드일 때: style 태그로 감싸고 previewHtml 또는 기본 HTML을 body에 삽입
       const html =
         previewHtml ||
         `
@@ -58,6 +61,7 @@ const CodePreview = ({
         </html>`;
     }
 
+    // HTML 코드일 때: 그대로 body에 삽입
     return isolate
       ? `<!DOCTYPE html>
            <html lang="ko">
@@ -108,7 +112,7 @@ const CodePreview = ({
               gap: '4px',
             }}
           >
-            LIVE
+            ● LIVE
           </span>
         )}
       </div>
@@ -127,10 +131,11 @@ const CodePreview = ({
             }}
           >
             <span>{language === 'css' ? 'CSS SOURCE' : 'HTML SOURCE'}</span>
-            <span style={{ color: 'var(--ll-orange)' }}>편집 가능</span>
+            <span style={{ color: 'var(--ll-orange)' }}>✏️ 편집 가능</span>
           </div>
 
           <div style={{ position: 'relative', flex: 1, overflow: 'hidden' }}>
+            {/* 실제 입력받는 투명한 텍스트 에디터 */}
             <textarea
               value={code}
               onChange={handleCodeChange}
@@ -178,6 +183,7 @@ const CodePreview = ({
               }}
             />
 
+            {/* 아래에 깔리는 Syntax Highlighter */}
             <div
               ref={highlightRef}
               style={{
@@ -244,6 +250,7 @@ const CodePreview = ({
         </div>
       </div>
 
+      {/* Tag Reference Footer */}
       {tags.length > 0 && (
         <div className="tag-reference-footer" style={{ background: '#fcfcfc', borderTop: '1px solid #eee', padding: '18px 24px' }}>
           <div style={{ fontSize: '0.7rem', color: 'var(--ll-orange)', fontWeight: 900, letterSpacing: '0.1em', marginBottom: '12px' }}>
@@ -262,7 +269,7 @@ const CodePreview = ({
                     borderRadius: '4px',
                   }}
                 >
-                  {tag.name}
+                  &lt;{tag.name}&gt;
                 </code>
                 <span style={{ fontSize: '0.85rem', color: '#333', fontWeight: '500' }}>{tag.desc}</span>
               </div>
