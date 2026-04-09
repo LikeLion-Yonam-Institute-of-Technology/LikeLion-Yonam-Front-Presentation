@@ -34,6 +34,25 @@ import {
 import { Week2Mission, Week2CodeStarter } from '../components/week2/3_1_Mission.jsx';
 import { Week2WrapUpSummary, Week2NextSession } from '../components/week2/4_1_WrapUp.jsx';
 
+// Week 3 imports
+import { Week3Welcome, Week3Goals, WhyJavaScript } from '../components/week3/0_Intro.jsx';
+import {
+  VariablesConcept, VariablesLive, DataTypes,
+  FunctionsIntro, FunctionsLive, ArraysObjects, ArraysLive,
+} from '../components/week3/1_JS_Basics.jsx';
+import {
+  WhatIsDOM, SelectingElements, DOMPlaygroundSlide, ModifyingDOM, DOMPractice,
+} from '../components/week3/2_DOM_Manipulation.jsx';
+import {
+  WhatAreEvents, EventVisualizer, AddEventListenerAnatomy, EventPracticeLive,
+} from '../components/week3/3_Event_Handling.jsx';
+import {
+  StateConceptIntro, StateToUIFlow, LionListDemo,
+} from '../components/week3/4_State_to_UI.jsx';
+import {
+  MissionBriefing, MissionCodeStarter, Week3WrapUp,
+} from '../components/week3/5_MissionWrapUp.jsx';
+
 export const weeklySlides = {
   1: {
     title: 'WEEK 01 : HTML & CSS 기초',
@@ -111,7 +130,39 @@ export const weeklySlides = {
   },
   3: {
     title: 'WEEK 03 : JavaScript 기초 & DOM 조작',
-    slides: [],
+    slides: [
+      // 섹션 0: 인트로
+      Week3Welcome,
+      Week3Goals,
+      WhyJavaScript,
+      // 섹션 1: JS 기초
+      VariablesConcept,
+      VariablesLive,
+      DataTypes,
+      FunctionsIntro,
+      FunctionsLive,
+      ArraysObjects,
+      ArraysLive,
+      // 섹션 2: DOM 조작
+      WhatIsDOM,
+      SelectingElements,
+      DOMPlaygroundSlide,
+      ModifyingDOM,
+      DOMPractice,
+      // 섹션 3: 이벤트 처리
+      WhatAreEvents,
+      EventVisualizer,
+      AddEventListenerAnatomy,
+      EventPracticeLive,
+      // 섹션 4: 상태 → 화면
+      StateConceptIntro,
+      StateToUIFlow,
+      LionListDemo,
+      // 섹션 5: 미션 & 마무리
+      MissionBriefing,
+      MissionCodeStarter,
+      Week3WrapUp,
+    ],
   },
   4: {
     title: 'WEEK 04 : JavaScript 비동기 & 데이터 흐름',
