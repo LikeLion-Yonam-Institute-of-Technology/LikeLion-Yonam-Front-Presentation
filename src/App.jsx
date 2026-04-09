@@ -11,11 +11,11 @@ function App() {
 
   const nextSlide = useCallback(() => {
     setCurrentSlideIndex((prev) => Math.min(prev + 1, slides.length - 1));
-  }, []);
+  }, [currentWeek]);
 
   const prevSlide = useCallback(() => {
     setCurrentSlideIndex((prev) => Math.max(prev - 1, 0));
-  }, []);
+  }, [currentWeek]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
