@@ -32,11 +32,26 @@ function App() {
       else if (e.key === 'ArrowLeft') prevSlide();
     };
     window.addEventListener('keydown', handleKeyDown);
+    console.log(currentSlideIndex, slides.length-1)
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide]);
+  }, [nextSlide, prevSlide, currentSlideIndex]);
 
   if (!slides || slides.length === 0) return <div>No slides found.</div>;
   
+  const isPrintMode = new URLSearchParams(window.location.search).get('print') === 'true';
+
+  if (isPrintMode) {
+    return (
+      <div className="print-mode">
+        {slides.map((SlideComponent, idx) => (
+          <div key={idx} className="print-slide slide-content-wrapper">
+            <SlideComponent />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   const CurrentSlideComponent = slides[currentSlideIndex];
   const progressPercent = ((currentSlideIndex + 1) / slides.length) * 100;
 
