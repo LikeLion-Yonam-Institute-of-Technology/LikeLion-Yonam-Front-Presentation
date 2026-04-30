@@ -3,7 +3,17 @@ import { useCallback, useEffect, useState } from 'react';
 import { weeklySlides } from './data/weeklySlides';
 
 function App() {
-  const [currentWeek, setCurrentWeek] = useState(1);
+  const availableWeeks = Object.keys(weeklySlides)
+    .map(Number)
+    .filter((week) => weeklySlides[week]?.slides?.length > 0);
+
+  const getInitialWeek = () => {
+    const weekParam = Number(new URLSearchParams(window.location.search).get('week'));
+    if (availableWeeks.includes(weekParam)) return weekParam;
+    return availableWeeks[0] || 1;
+  };
+
+  const [currentWeek, setCurrentWeek] = useState(getInitialWeek);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 
   const weekData = weeklySlides[currentWeek] || { title: '', slides: [] };
@@ -11,11 +21,18 @@ function App() {
 
   const nextSlide = useCallback(() => {
     setCurrentSlideIndex((prev) => Math.min(prev + 1, slides.length - 1));
-  }, [currentWeek]);
+  }, [slides.length]);
 
   const prevSlide = useCallback(() => {
     setCurrentSlideIndex((prev) => Math.max(prev - 1, 0));
-  }, [currentWeek]);
+  }, []);
+
+  useEffect(() => {
+    setCurrentSlideIndex((prev) => {
+      if (slides.length === 0) return 0;
+      return Math.min(prev, slides.length - 1);
+    });
+  }, [slides.length]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -32,11 +49,8 @@ function App() {
       else if (e.key === 'ArrowLeft') prevSlide();
     };
     window.addEventListener('keydown', handleKeyDown);
-    console.log(currentSlideIndex, slides.length-1)
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [nextSlide, prevSlide, currentSlideIndex]);
-
-  if (!slides || slides.length === 0) return <div>No slides found.</div>;
+  }, [nextSlide, prevSlide]);
   
   const isPrintMode = new URLSearchParams(window.location.search).get('print') === 'true';
 
@@ -53,7 +67,8 @@ function App() {
   }
 
   const CurrentSlideComponent = slides[currentSlideIndex];
-  const progressPercent = ((currentSlideIndex + 1) / slides.length) * 100;
+  const hasSlides = slides.length > 0 && CurrentSlideComponent;
+  const progressPercent = hasSlides ? ((currentSlideIndex + 1) / slides.length) * 100 : 0;
 
   return (
     <div className="app-shell">
@@ -97,7 +112,12 @@ function App() {
             }}
           >
             {Object.keys(weeklySlides).map(week => (
-              <option key={week} value={week} style={{ color: 'black' }}>
+              <option
+                key={week}
+                value={week}
+                disabled={!weeklySlides[week].slides?.length}
+                style={{ color: 'black' }}
+              >
                 {weeklySlides[week].title}
               </option>
             ))}
@@ -108,39 +128,48 @@ function App() {
       {/* MAIN CONTENT */}
       <main className="main-content">
         <div className="slide-content-wrapper">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentSlideIndex}
-              initial={{ opacity: 0, scale: 0.98, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 1.02, y: -10 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              style={{ height: '100%' }}
-            >
-              <CurrentSlideComponent />
-            </motion.div>
-          </AnimatePresence>
+          {hasSlides ? (
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`${currentWeek}-${currentSlideIndex}`}
+                initial={{ opacity: 0, scale: 0.98, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 1.02, y: -10 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                style={{ height: '100%' }}
+              >
+                <CurrentSlideComponent />
+              </motion.div>
+            </AnimatePresence>
+          ) : (
+            <div style={{ height: '100%', display: 'grid', placeItems: 'center', textAlign: 'center' }}>
+              <div>
+                <h2>No slides found.</h2>
+                <p className="lead">슬라이드가 등록된 주차를 선택해 주세요.</p>
+              </div>
+            </div>
+          )}
         </div>
       </main>
 
       {/* NAVIGATION */}
       <footer className="global-nav">
         <div className="nav-counter">
-          {String(currentSlideIndex + 1).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
+          {String(hasSlides ? currentSlideIndex + 1 : 0).padStart(2, '0')} / {String(slides.length).padStart(2, '0')}
         </div>
         
         <div className="nav-buttons">
           <button 
             className="nav-btn" 
             onClick={prevSlide} 
-            disabled={currentSlideIndex === 0}
+            disabled={!hasSlides || currentSlideIndex === 0}
           >
             PREV
           </button>
           <button 
             className={`nav-btn ${currentSlideIndex < slides.length - 1 ? 'primary' : ''}`}
             onClick={nextSlide} 
-            disabled={currentSlideIndex === slides.length - 1}
+            disabled={!hasSlides || currentSlideIndex === slides.length - 1}
           >
             {currentSlideIndex === slides.length - 1 ? 'FINISH' : 'NEXT →'}
           </button>
