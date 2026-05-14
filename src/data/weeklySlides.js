@@ -1,4 +1,47 @@
 import {
+  Week5Welcome,
+  Week5Goals,
+} from "../components/week5/0_Intro.jsx";
+import {
+  VanillaPainPoint,
+  WhatIsReact,
+  DeclarativeVsImperative,
+} from "../components/week5/1_WhyReact.jsx";
+import {
+  CDNHTMLStructure,
+  FirstHelloReact,
+} from "../components/week5/2_CDNSetup.jsx";
+import {
+  JSXIntro,
+  JSXExpressionsAndAttributes,
+  JSXPractice,
+} from "../components/week5/3_JSX.jsx";
+import {
+  FirstFunctionComponent,
+  ComponentComposition,
+  ComponentSplitThinking,
+  FunctionVsArrow,
+  ComponentPractice,
+} from "../components/week5/4_Components.jsx";
+import {
+  PropsIntro,
+  PropsDestructuringAndDemo,
+  PropsPractice,
+} from "../components/week5/5_Props.jsx";
+import {
+  MissionPreview,
+  Week5Mission,
+  Week5MissionHint,
+  Week5WrapUp,
+} from "../components/week5/6_MissionWrapUp.jsx";
+import {
+  ViteWhy,
+  WhatIsNodeNpm,
+  ViteInstall,
+  ViteProjectStructure,
+  ViteComponentFiles,
+} from "../components/week5/6_ViteSetup.jsx";
+import {
   WelcomeSlide,
   WebPillars,
   EverythingIsABox,
@@ -273,6 +316,42 @@ export const weeklySlides = {
   },
   5: {
     title: "WEEK 05 : React 시작하기 - 컴포넌트 사고",
-    slides: [],
+    slides: [
+      // 섹션 0: 인트로
+      Week5Welcome,
+      Week5Goals,
+      // 섹션 1: 왜 React인가
+      VanillaPainPoint,
+      WhatIsReact,
+      DeclarativeVsImperative,
+      // 섹션 2: CDN 셋업
+      CDNHTMLStructure,
+      FirstHelloReact,
+      // 섹션 3: JSX
+      JSXIntro,
+      JSXExpressionsAndAttributes,
+      JSXPractice,
+      // 섹션 4: 컴포넌트
+      FirstFunctionComponent,
+      ComponentComposition,
+      ComponentSplitThinking,
+      FunctionVsArrow,
+      ComponentPractice,
+      // 섹션 5: Props
+      PropsIntro,
+      PropsDestructuringAndDemo,
+      PropsPractice,
+      // 섹션 6: Vite 셋업
+      ViteWhy,
+      WhatIsNodeNpm,
+      ViteInstall,
+      ViteProjectStructure,
+      ViteComponentFiles,
+      // 섹션 7: 미션 & 마무리
+      MissionPreview,
+      Week5Mission,
+      Week5MissionHint,
+      Week5WrapUp,
+    ],
   },
 };
